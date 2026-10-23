@@ -40,106 +40,111 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 min-h-screen flex flex-col justify-between text-gray-800">
+<body class="bg-gray-200 min-h-screen flex flex-col items-center justify-start text-gray-800 m-0 p-0">
 
-    <!-- MAIN CONTAINER -->
-    <div class="w-full">
+    <!-- MOBILE CONTAINER (Tampilan Layar HP di Tengah Laptop) -->
+    <div class="w-full max-w-[480px] bg-gray-50 min-h-screen flex flex-col justify-between shadow-2xl relative overflow-x-hidden">
 
-        <!-- HEADER BANNER UTAMA -->
-        <header class="w-full bg-white shadow-sm">
-            <div class="w-full max-w-4xl mx-auto">
-                <img src="assets/images/banner-utama.png" alt="PT Matahari Putra Prima Tbk Banner" class="w-full h-auto object-cover shadow-md">
-            </div>
-        </header>
+        <!-- MAIN CONTENT WRAPPER -->
+        <div class="w-full">
 
-        <!-- SUB-HEADER BANNER: MagangHub Batch 3 Angkatan 2 -->
-        <div class="w-full bg-mppaBlue shadow-inner py-4 px-4 text-white">
-            <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div class="flex items-center space-x-3 bg-white text-gray-900 px-4 py-2 rounded-xl shadow-sm">
-                    <img src="assets/images/logo-maganghub.png" alt="MagangHub" class="h-8 object-contain">
+            <!-- HEADER BANNER UTAMA -->
+            <header class="w-full bg-white shadow-sm">
+                <div class="w-full">
+                    <img src="assets/images/banner-utama.png" alt="PT Matahari Putra Prima Tbk Banner" class="w-full h-auto object-cover shadow-md">
                 </div>
-                <div class="text-center sm:text-right">
-                    <h2 class="text-lg md:text-xl font-bold tracking-wide">Batch 3 Angkatan 2 (2026)</h2>
-                </div>
-            </div>
-        </div>
+            </header>
 
-        <!-- MAIN INTERACTIVE CONTENT AREA -->
-        <main class="max-w-4xl mx-auto px-4 py-8 md:py-12">
-            
-            <!-- LOCATION SELECTOR SECTION -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 text-center mb-8">
-                <label for="locationFilter" class="block text-lg md:text-xl font-bold text-gray-800 mb-3 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-location-dot text-mppaBlue"></i>
-                    <span>Select Your Location</span>
-                </label>
-                <div class="max-w-md mx-auto relative">
-                    <select id="locationFilter" class="w-full appearance-none bg-gray-50 border border-gray-300 hover:border-mppaBlue focus:border-mppaBlue focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-3.5 pr-10 text-gray-700 font-medium text-base transition outline-none cursor-pointer shadow-sm">
-                        <option value="" disabled selected>-- Pilih Lokasi / Area Penempatan --</option>
-                    </select>
-                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-                        <i class="fa-solid fa-chevron-down text-sm"></i>
+            <!-- SUB-HEADER BANNER: MagangHub Batch 3 Angkatan 2 -->
+            <div class="w-full bg-mppaBlue shadow-inner py-4 px-4 text-white">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div class="flex items-center space-x-3 bg-white text-gray-900 px-4 py-2 rounded-xl shadow-sm">
+                        <img src="assets/images/logo-maganghub.png" alt="MagangHub" class="h-8 object-contain">
+                    </div>
+                    <div class="text-center sm:text-right">
+                        <h2 class="text-base md:text-lg font-bold tracking-wide">Batch 3 Angkatan 2 (2026)</h2>
                     </div>
                 </div>
-                <p id="helperText" class="text-xs text-gray-400 mt-2">Pilih wilayah di atas untuk menampilkan daftar lowongan magang yang tersedia.</p>
             </div>
 
-            <!-- RESULTS SECTION -->
-            <div id="resultsContainer" class="hidden fade-in">
+            <!-- MAIN INTERACTIVE CONTENT AREA -->
+            <main class="w-full px-4 py-6">
                 
-                <!-- Action Prompt Divider -->
-                <div class="w-full border border-mppaBlue/30 bg-blue-50/50 rounded-xl py-3 px-4 text-center mb-6 shadow-xs">
-                    <p class="text-mppaBlue font-semibold text-sm md:text-base flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-hand-pointer animate-bounce"></i>
-                        <span>Click Any Companies You Want to Apply!</span>
-                    </p>
+                <!-- LOCATION SELECTOR SECTION -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 text-center mb-6">
+                    <label for="locationFilter" class="block text-base font-bold text-gray-800 mb-3 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-location-dot text-mppaBlue"></i>
+                        <span>Select Your Location</span>
+                    </label>
+                    <div class="w-full relative">
+                        <select id="locationFilter" class="w-full appearance-none bg-gray-50 border border-gray-300 hover:border-mppaBlue focus:border-mppaBlue focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-3.5 pr-10 text-gray-700 font-medium text-sm transition outline-none cursor-pointer shadow-sm">
+                            <option value="" disabled selected>-- Pilih Lokasi Penempatan --</option>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                            <i class="fa-solid fa-chevron-down text-sm"></i>
+                        </div>
+                    </div>
+                    <p id="helperText" class="text-[11px] text-gray-400 mt-2">Pilih wilayah di atas untuk menampilkan lowongan.</p>
                 </div>
 
-                <!-- Cards Grid (Presisi 2 kolom & kotak logo 100x100px) -->
-                <div id="jobsList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Cards injected dynamically -->
+                <!-- RESULTS SECTION -->
+                <div id="resultsContainer" class="hidden fade-in">
+                    
+                    <!-- Action Prompt Divider -->
+                    <div class="w-full border border-mppaBlue/30 bg-blue-50/50 rounded-xl py-2.5 px-3 text-center mb-4 shadow-xs">
+                        <p class="text-mppaBlue font-semibold text-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-hand-pointer animate-bounce"></i>
+                            <span>Click Any Companies You Want to Apply!</span>
+                        </p>
+                    </div>
+
+                    <!-- Cards List (Tampil 1 kolom memanjang ala HP) -->
+                    <div id="jobsList" class="flex flex-col gap-3">
+                        <!-- Cards injected dynamically -->
+                    </div>
                 </div>
-            </div>
 
-            <!-- EMPTY STATE / INITIAL STATE -->
-            <div id="emptyState" class="text-center py-12">
-                <div class="w-16 h-16 bg-blue-50 text-mppaBlue rounded-full flex items-center justify-center mx-auto mb-3 text-2xl shadow-inner">
-                    <i class="fa-solid fa-compass"></i>
+                <!-- EMPTY STATE / INITIAL STATE -->
+                <div id="emptyState" class="text-center py-10">
+                    <div class="w-14 h-14 bg-blue-50 text-mppaBlue rounded-full flex items-center justify-center mx-auto mb-3 text-xl shadow-inner">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="text-gray-600 font-semibold text-sm">Belum ada lokasi yang dipilih</h3>
+                    <p class="text-gray-400 text-xs mt-1">Silakan pilih wilayah pada dropdown di atas.</p>
                 </div>
-                <h3 class="text-gray-600 font-semibold text-base">Belum ada lokasi yang dipilih</h3>
-                <p class="text-gray-400 text-sm mt-1">Silakan pilih wilayah pada dropdown di atas untuk melihat lowongan magang.</p>
-            </div>
 
-        </main>
-    </div>
-
-    <!-- FOOTER SECTION -->
-    <footer class="w-full bg-mppaRed text-white mt-12 py-6 px-4 shadow-lg">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-            
-            <!-- Left Info Links with updated URLs -->
-            <div class="flex flex-wrap items-center justify-center md:justify-start gap-6 text-sm font-medium">
-                <a href="https://www.mppa.co.id" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:opacity-85 transition">
-                    <i class="fa-solid fa-globe text-base"></i>
-                    <span>mppa.co.id</span>
-                </a>
-                <a href="https://www.instagram.com/mppa.careers/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:opacity-85 transition">
-                    <i class="fa-brands fa-instagram text-base"></i>
-                    <span>careers.mppa</span>
-                </a>
-                <a href="https://www.linkedin.com/company/matahari-putra-prima-tbk/posts/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 hover:opacity-85 transition">
-                    <i class="fa-brands fa-linkedin text-base"></i>
-                    <span>PT. Matahari Putra Prima Tbk</span>
-                </a>
-            </div>
-
-            <!-- Right Logo Group -->
-            <div>
-                <img src="assets/images/mppa putih.png" alt="MPPA" class="h-7 object-contain">
-            </div>
-
+            </main>
         </div>
-    </footer>
+
+        <!-- FOOTER SECTION -->
+        <footer class="w-full bg-mppaRed text-white py-5 px-4 shadow-lg mt-auto">
+            <div class="flex flex-col items-center justify-center gap-4 text-center">
+                
+                <!-- Left Info Links with updated URLs -->
+                <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium">
+                    <a href="https://www.mppa.co.id" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 hover:opacity-85 transition">
+                        <i class="fa-solid fa-globe"></i>
+                        <span>mppa.co.id</span>
+                    </a>
+                    <a href="https://www.instagram.com/mppa.careers/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 hover:opacity-85 transition">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>careers.mppa</span>
+                    </a>
+                    <a href="https://www.linkedin.com/company/matahari-putra-prima-tbk/posts/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 hover:opacity-85 transition">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                </div>
+
+                <!-- Right Logo Group -->
+                <div>
+                    <img src="assets/images/mppa putih.png" alt="MPPA" class="h-6 object-contain">
+                </div>
+
+            </div>
+        </footer>
+
+    </div>
 
     <!-- JAVASCRIPT LOGIC & DUMMY DATA -->
     <script>
@@ -214,50 +219,4 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             const locationSelect = document.getElementById("locationFilter");
-            const resultsContainer = document.getElementById("resultsContainer");
-            const emptyState = document.getElementById("emptyState");
-            const jobsList = document.getElementById("jobsList");
-
-            const uniqueLocations = [...new Set(internshipData.map(item => item.location))].sort();
-
-            uniqueLocations.forEach(loc => {
-                const option = document.createElement("option");
-                option.value = loc;
-                option.textContent = loc;
-                locationSelect.appendChild(option);
-            });
-
-            locationSelect.addEventListener("change", (e) => {
-                const selectedLocation = e.target.value;
-                const filteredJobs = internshipData.filter(item => item.location === selectedLocation);
-
-                if (filteredJobs.length > 0) {
-                    emptyState.classList.add("hidden");
-                    resultsContainer.classList.remove("hidden");
-
-                    jobsList.innerHTML = filteredJobs.map(job => `
-                        <a href="${job.applyUrl}" target="_blank" rel="noopener noreferrer" 
-                           class="group bg-white border border-gray-200 hover:border-mppaBlue rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 flex items-center gap-4">
-                            <div class="w-[100px] h-[100px] min-w-[100px] min-h-[100px] ${job.isCorporate ? 'bg-mppaRed' : 'bg-white'} rounded-xl border border-gray-100 flex items-center justify-center p-2 shadow-sm shrink-0">
-                                <img src="${job.logoPath}" alt="${job.brandType}" class="max-h-full max-w-full object-contain">
-                            </div>
-                            <div class="flex-grow min-w-0">
-                                <h4 class="font-bold text-gray-800 text-sm sm:text-base truncate group-hover:text-mppaBlue transition mb-1">
-                                    ${job.companyName}
-                                </h4>
-                                <p class="text-xs sm:text-sm text-gray-500 flex items-center gap-1 truncate">
-                                    <i class="fa-solid fa-map-pin text-mppaRed shrink-0"></i>
-                                    <span class="truncate">${job.locationDetail}</span>
-                                </p>
-                            </div>
-                        </a>
-                    `).join("");
-                } else {
-                    emptyState.classList.remove("hidden");
-                    resultsContainer.classList.add("hidden");
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+            const resultsContainer =
