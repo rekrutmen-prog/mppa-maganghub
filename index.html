@@ -42,8 +42,8 @@
 </head>
 <body class="bg-gray-200 min-h-screen flex flex-col items-center justify-start text-gray-800 m-0 p-0">
 
-    <!-- MOBILE CONTAINER (Tampilan Layar HP di Tengah Laptop) -->
-    <div class="w-full max-w-[480px] bg-gray-50 min-h-screen flex flex-col justify-between shadow-2xl relative overflow-x-hidden">
+    <!-- WRAPPER UTAMA (Skala diperbesar ke max-w-[768px] agar tidak terlalu kecil di layar laptop) -->
+    <div class="w-full max-w-[768px] bg-gray-50 min-h-screen flex flex-col justify-between shadow-2xl relative overflow-x-hidden">
 
         <!-- MAIN CONTENT WRAPPER -->
         <div class="w-full">
@@ -56,167 +56,58 @@
             </header>
 
             <!-- SUB-HEADER BANNER: MagangHub Batch 3 Angkatan 2 -->
-            <div class="w-full bg-mppaBlue shadow-inner py-4 px-4 text-white">
-                <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <div class="flex items-center space-x-3 bg-white text-gray-900 px-4 py-2 rounded-xl shadow-sm">
-                        <img src="assets/images/logo-maganghub.png" alt="MagangHub" class="h-8 object-contain">
+            <div class="w-full bg-mppaBlue shadow-inner py-5 px-6 text-white">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 bg-white text-gray-900 px-5 py-2.5 rounded-xl shadow-sm">
+                        <img src="assets/images/logo-maganghub.png" alt="MagangHub" class="h-9 object-contain">
                     </div>
                     <div class="text-center sm:text-right">
-                        <h2 class="text-base md:text-lg font-bold tracking-wide">Batch 3 Angkatan 2 (2026)</h2>
+                        <h2 class="text-lg md:text-xl font-bold tracking-wide">Batch 3 Angkatan 2 (2026)</h2>
                     </div>
                 </div>
             </div>
 
             <!-- MAIN INTERACTIVE CONTENT AREA -->
-            <main class="w-full px-4 py-6">
+            <main class="w-full px-6 py-8">
                 
                 <!-- LOCATION SELECTOR SECTION -->
-                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 text-center mb-6">
-                    <label for="locationFilter" class="block text-base font-bold text-gray-800 mb-3 flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-location-dot text-mppaBlue"></i>
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 text-center mb-8">
+                    <label for="locationFilter" class="block text-lg font-bold text-gray-800 mb-3 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-location-dot text-mppaBlue text-xl"></i>
                         <span>Select Your Location</span>
                     </label>
-                    <div class="w-full relative">
-                        <select id="locationFilter" class="w-full appearance-none bg-gray-50 border border-gray-300 hover:border-mppaBlue focus:border-mppaBlue focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-3.5 pr-10 text-gray-700 font-medium text-sm transition outline-none cursor-pointer shadow-sm">
+                    <div class="w-full relative max-w-lg mx-auto">
+                        <select id="locationFilter" class="w-full appearance-none bg-gray-50 border border-gray-300 hover:border-mppaBlue focus:border-mppaBlue focus:ring-2 focus:ring-blue-100 rounded-xl px-4 py-4 pr-10 text-gray-700 font-medium text-base transition outline-none cursor-pointer shadow-sm">
                             <option value="" disabled selected>-- Pilih Lokasi Penempatan --</option>
                         </select>
                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
-                            <i class="fa-solid fa-chevron-down text-sm"></i>
+                            <i class="fa-solid fa-chevron-down text-base"></i>
                         </div>
                     </div>
-                    <p id="helperText" class="text-[11px] text-gray-400 mt-2">Pilih wilayah di atas untuk menampilkan lowongan.</p>
+                    <p id="helperText" class="text-xs text-gray-400 mt-3">Pilih wilayah di atas untuk menampilkan daftar lowongan.</p>
                 </div>
 
                 <!-- RESULTS SECTION -->
                 <div id="resultsContainer" class="hidden fade-in">
                     
                     <!-- Action Prompt Divider -->
-                    <div class="w-full border border-mppaBlue/30 bg-blue-50/50 rounded-xl py-2.5 px-3 text-center mb-4 shadow-xs">
-                        <p class="text-mppaBlue font-semibold text-xs flex items-center justify-center gap-2">
+                    <div class="w-full border border-mppaBlue/30 bg-blue-50/50 rounded-xl py-3 px-4 text-center mb-6 shadow-xs">
+                        <p class="text-mppaBlue font-semibold text-sm sm:text-base flex items-center justify-center gap-2">
                             <i class="fa-solid fa-hand-pointer animate-bounce"></i>
                             <span>Click Any Companies You Want to Apply!</span>
                         </p>
                     </div>
 
-                    <!-- Cards List (Tampil 1 kolom memanjang ala HP) -->
-                    <div id="jobsList" class="flex flex-col gap-3">
+                    <!-- Cards List (Tampil grid 2 kolom yang proporsional dan jelas) -->
+                    <div id="jobsList" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <!-- Cards injected dynamically -->
                     </div>
                 </div>
 
                 <!-- EMPTY STATE / INITIAL STATE -->
-                <div id="emptyState" class="text-center py-10">
-                    <div class="w-14 h-14 bg-blue-50 text-mppaBlue rounded-full flex items-center justify-center mx-auto mb-3 text-xl shadow-inner">
+                <div id="emptyState" class="text-center py-14">
+                    <div class="w-16 h-16 bg-blue-50 text-mppaBlue rounded-full flex items-center justify-center mx-auto mb-3 text-2xl shadow-inner">
                         <i class="fa-solid fa-compass"></i>
                     </div>
-                    <h3 class="text-gray-600 font-semibold text-sm">Belum ada lokasi yang dipilih</h3>
-                    <p class="text-gray-400 text-xs mt-1">Silakan pilih wilayah pada dropdown di atas.</p>
-                </div>
-
-            </main>
-        </div>
-
-        <!-- FOOTER SECTION -->
-        <footer class="w-full bg-mppaRed text-white py-5 px-4 shadow-lg mt-auto">
-            <div class="flex flex-col items-center justify-center gap-4 text-center">
-                
-                <!-- Left Info Links with updated URLs -->
-                <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium">
-                    <a href="https://www.mppa.co.id" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 hover:opacity-85 transition">
-                        <i class="fa-solid fa-globe"></i>
-                        <span>mppa.co.id</span>
-                    </a>
-                    <a href="https://www.instagram.com/mppa.careers/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 hover:opacity-85 transition">
-                        <i class="fa-brands fa-instagram"></i>
-                        <span>careers.mppa</span>
-                    </a>
-                    <a href="https://www.linkedin.com/company/matahari-putra-prima-tbk/posts/" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-1.5 hover:opacity-85 transition">
-                        <i class="fa-brands fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                </div>
-
-                <!-- Right Logo Group -->
-                <div>
-                    <img src="assets/images/mppa putih.png" alt="MPPA" class="h-6 object-contain">
-                </div>
-
-            </div>
-        </footer>
-
-    </div>
-
-    <!-- JAVASCRIPT LOGIC & DUMMY DATA -->
-    <script>
-        const internshipData = [
-            {
-                id: 1,
-                location: "Jabodetabek",
-                companyName: "PT Matahari Putra Prima Tbk (Head Office)",
-                locationDetail: "Tangerang, Banten",
-                brandType: "Corporate",
-                badgeColor: "bg-red-50 text-mppaRed border-red-200",
-                logoPath: "assets/images/mppa putih.png",
-                isCorporate: true,
-                applyUrl: "https://maganghub.kemnaker.go.id/"
-            },
-            {
-                id: 2,
-                location: "Jabodetabek",
-                companyName: "Hypermart Cyberpark",
-                locationDetail: "Karawaci, Tangerang",
-                brandType: "Hypermart",
-                badgeColor: "bg-yellow-50 text-yellow-700 border-yellow-200",
-                logoPath: "assets/images/hypermart.png",
-                isCorporate: false,
-                applyUrl: "https://maganghub.kemnaker.go.id/"
-            },
-            {
-                id: 3,
-                location: "Jabodetabek",
-                companyName: "Hyfresh Bojongsari",
-                locationDetail: "Bojongsari, Depok",
-                brandType: "Hyfresh",
-                badgeColor: "bg-blue-50 text-blue-700 border-blue-200",
-                logoPath: "assets/images/hyfresh.png",
-                isCorporate: false,
-                applyUrl: "https://maganghub.kemnaker.go.id/"
-            },
-            {
-                id: 4,
-                location: "Jawa Barat",
-                companyName: "Foodmart Supermarket Bandung",
-                locationDetail: "Bandung, Jawa Barat",
-                brandType: "Foodmart",
-                badgeColor: "bg-green-50 text-green-700 border-green-200",
-                logoPath: "assets/images/foodmart.png",
-                isCorporate: false,
-                applyUrl: "https://maganghub.kemnaker.go.id/"
-            },
-            {
-                id: 5,
-                location: "Jawa Barat",
-                companyName: "Bread & Butter Setiabudi",
-                locationDetail: "Bandung, Jawa Barat",
-                brandType: "Bread & Butter",
-                badgeColor: "bg-pink-50 text-pink-700 border-pink-200",
-                logoPath: "assets/images/bread.png",
-                isCorporate: false,
-                applyUrl: "https://maganghub.kemnaker.go.id/"
-            },
-            {
-                id: 6,
-                location: "Bali",
-                companyName: "Primo Supermarket Bali",
-                locationDetail: "Denpasar, Bali",
-                brandType: "Primo",
-                badgeColor: "bg-amber-50 text-amber-700 border-amber-200",
-                logoPath: "assets/images/hypermart.png",
-                isCorporate: false,
-                applyUrl: "https://maganghub.kemnaker.go.id/"
-            }
-        ];
-
-        document.addEventListener("DOMContentLoaded", () => {
-            const locationSelect = document.getElementById("locationFilter");
-            const resultsContainer =
+                    <h3 class="text-gray-700 font-semibold text-base">Belum ada lokasi yang dipilih</h3>
+                    <p class="text-gray-400 text-sm mt-1">Silakan pilih wilayah pada dropdown di atas.</
